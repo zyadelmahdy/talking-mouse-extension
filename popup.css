@@ -1,0 +1,218 @@
+body {
+  margin: 0;
+  width: 400px;
+  min-height: 480px;
+  background: #0a0e14;
+  color: #e8eaed;
+  font-family: -apple-system, "SF Pro Display", "Inter", system-ui, sans-serif;
+  font-size: 14px;
+}
+
+#app { padding: 16px; }
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2a2f39;
+}
+
+h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+#settings-btn {
+  background: none;
+  border: none;
+  color: #9aa0a6;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+#settings-btn:hover { color: #e8eaed; background: #1a1f29; }
+
+#status-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.label { color: #9aa0a6; font-size: 13px; }
+
+#arousal-label {
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.arousal-high { background: #1e3a5f; color: #6db1f5; }
+.arousal-low  { background: #4d3217; color: #f5b047; }
+.arousal-none { background: #1a1f29; color: #9aa0a6; }
+
+.badge-auto, .badge-manual, .badge-stale {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.badge-auto   { background: #1e3a3f; color: #6dd5b1; }
+.badge-manual { background: #3a2a3f; color: #d56db1; }
+.badge-stale  { background: #2f2a1a; color: #d5b16d; }
+
+#toggle-btn, #refresh-btn, #save-key-btn, #back-btn {
+  background: #1a1f29;
+  border: 1px solid #2a2f39;
+  color: #e8eaed;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  margin-left: auto;
+}
+
+#toggle-btn:hover, #refresh-btn:hover, #back-btn:hover { background: #232830; }
+
+#target-msg { color: #9aa0a6; font-size: 12px; margin-bottom: 8px; }
+#target-msg strong { color: #e8eaed; font-weight: 500; }
+
+#status-bar {
+  color: #6b7280;
+  font-size: 11px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  margin-bottom: 12px;
+  min-height: 14px;
+}
+
+#recommendations { margin-bottom: 14px; }
+
+.video-card {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #1a1f29;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.video-card:hover { background: #232830; }
+
+.video-thumb {
+  width: 100px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.video-info { flex: 1; min-width: 0; }
+
+.video-title {
+  font-weight: 500;
+  margin-bottom: 4px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.video-meta { color: #9aa0a6; font-size: 11px; }
+
+.loading, .error {
+  color: #9aa0a6;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.error { color: #f55; }
+
+#refresh-btn { width: 100%; margin-left: 0; }
+
+.hidden { display: none; }
+
+/* ----- Settings panel ----- */
+
+#settings-view h2 { font-size: 15px; margin-top: 0; margin-bottom: 16px; }
+
+.settings-section {
+  margin-bottom: 18px;
+}
+.section-label {
+  display: block;
+  color: #9aa0a6;
+  font-size: 10px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.strategy-buttons {
+  display: flex;
+  gap: 6px;
+}
+.strategy-buttons button {
+  flex: 1;
+  background: #1a1f29;
+  border: 1px solid #2a2f39;
+  color: #9aa0a6;
+  padding: 8px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  transition: all 0.12s;
+  margin: 0;
+}
+.strategy-buttons button:hover {
+  background: #232830;
+  color: #e8eaed;
+}
+.strategy-buttons button.active {
+  background: #2a2f39;
+  color: #ffffff;
+  border-color: #4a90e2;
+  font-weight: 500;
+}
+
+#api-key-input {
+  width: 100%;
+  background: #1a1f29;
+  border: 1px solid #2a2f39;
+  color: #e8eaed;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+#api-key-input:focus { outline: none; border-color: #4a90e2; }
+
+.hint { color: #9aa0a6; font-size: 11px; line-height: 1.5; margin: 4px 0 16px; }
+.hint a { color: #6db1f5; }
+
+#save-key-btn {
+  background: #4a90e2;
+  border-color: #4a90e2;
+  color: white;
+  margin: 0;
+}
+#save-key-btn:hover { background: #5a9ae8; }
+
+#back-btn { margin-top: 16px; width: 100%; margin-left: 0; }

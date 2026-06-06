@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🐭 Talking Mouse</h1>
+      <button id="settings-btn" title="Settings">⚙</button>
+    </header>
+
+    <div id="main-view">
+      <div id="status-row">
+        <span class="label">Detected:</span>
+        <span id="arousal-label" class="arousal-none">—</span>
+        <span id="auto-badge" class="badge-auto">WAITING</span>
+        <button id="toggle-btn">→ Try anyway</button>
+      </div>
+      <div id="target-msg">…</div>
+      <div id="status-bar"></div>
+
+      <div id="recommendations">
+        <div class="loading">Move your mouse around for ~30s, then open this popup again.</div>
+      </div>
+
+      <button id="refresh-btn">↻ Refresh</button>
+    </div>
+
+    <div id="settings-view" class="hidden">
+      <h2>Settings</h2>
+
+      <div class="settings-section">
+        <span class="section-label">Content type</span>
+        <div class="strategy-buttons" data-state="contentMode">
+          <button data-content="any" class="active">🎬 Any video</button>
+          <button data-content="music">🎵 Music only</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <span class="section-label">When detecting HIGH arousal</span>
+        <div class="strategy-buttons" data-state="high">
+          <button data-content="calming" class="active">🧘 Calm me</button>
+          <button data-content="energizing">⚡ Channel energy</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <span class="section-label">When detecting LOW arousal</span>
+        <div class="strategy-buttons" data-state="low">
+          <button data-content="calming">🧘 Keep calm</button>
+          <button data-content="energizing" class="active">⚡ Energize me</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <label class="section-label" for="api-key-input">YouTube Data API v3 Key</label>
+        <input type="password" id="api-key-input" placeholder="AIzaSy...">
+        <button id="save-key-btn">Save key</button>
+      </div>
+
+      <p class="hint">
+        Get a key at <a href="#" id="console-link">console.cloud.google.com</a><br>
+        → enable YouTube Data API v3 → Credentials → API key
+      </p>
+
+      <button id="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
