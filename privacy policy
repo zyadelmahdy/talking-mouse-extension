@@ -1,0 +1,92 @@
+# Privacy Policy — Talking Mouse
+
+**Last updated:** June 6, 2026
+
+Talking Mouse is a Chrome browser extension that recommends YouTube videos based on the user's inferred affective state. Affective state is inferred from mouse trajectory patterns using an on-device machine learning classifier.
+
+This privacy policy describes what data the extension accesses, what it does NOT access, and how that data is handled.
+
+---
+
+## What the extension collects
+
+The extension's content script captures the following from each web page the user visits:
+
+- Cursor x/y coordinates (in CSS pixels)
+- Mouse event type (`mousemove`, `mousedown`, `mouseup`)
+- Mouse button identifier (for click events only)
+- Local millisecond timestamp
+
+All captured events are held only in a rolling 60-second buffer inside the extension's local service worker.
+
+## What the extension does NOT collect
+
+- Page content, DOM structure, or rendered text
+- Page URLs, page titles, or browsing history
+- Text typed into forms, search boxes, or input fields
+- Login credentials, passwords, payment data, or any other identifying information
+- Audio, video, microphone, camera, or any other sensor data
+- Clipboard contents
+- Personally identifiable information of any kind
+
+## Where data is processed
+
+All captured mouse data is processed entirely on the user's device. The Random Forest classifier that infers affective state runs locally inside the extension's service worker.
+
+**No mouse data is ever transmitted to any server**, including the developer's own infrastructure.
+
+## Outbound network requests
+
+The extension makes network requests only to the following endpoint:
+
+- `https://www.googleapis.com/youtube/v3/*` — YouTube Data API v3, to fetch video recommendations matching the user's inferred state. Only the search query string (for example, `"lofi study music"`) and the YouTube API key are sent. No mouse data is included.
+
+YouTube's privacy policy: https://policies.google.com/privacy
+
+## Local storage
+
+The extension uses `chrome.storage.local` (device-local, never synced to any Google account) to persist:
+
+- The user's YouTube Data API v3 key
+- The user's affect-regulation strategy preference per arousal state
+- The user's content type filter preference (any video vs. music-only)
+
+No browsing data, no captured mouse data, and no analytics are written to storage.
+
+## How to delete stored data
+
+To delete all data stored by the extension:
+
+1. Visit `chrome://extensions` in Chrome
+2. Find "Talking Mouse"
+3. Click "Remove" (uninstalls the extension and clears all its storage)
+
+Alternatively, in the extension's popup, open the developer console and run:
+`chrome.storage.local.clear()`
+
+## Third-party services
+
+The only third-party service the extension contacts is YouTube Data API v3, owned and operated by Google LLC. Use of the YouTube API is subject to Google's terms and privacy policy:
+
+- YouTube API Terms of Service: https://developers.google.com/youtube/terms/api-services-terms-of-service
+- Google Privacy Policy: https://policies.google.com/privacy
+
+## Children's privacy
+
+Talking Mouse is not directed at children under 13 years of age. The developer does not knowingly collect personal information from children under 13. If you believe a child has used this extension, contact the developer at the email below and any stored preferences will be removed.
+
+## Research context
+
+This extension is built on academic research conducted by the developer. The classifier was trained on a controlled-task dataset collected under informed consent from adult participants. No data from extension users is collected, retained, or used for research purposes.
+
+## Changes to this policy
+
+This privacy policy may be updated to reflect changes in the extension's behavior or in applicable regulations. The current version is always available at this URL.
+
+## Contact
+
+Privacy questions, deletion requests, or other concerns:
+
+**Developer:** Zyad Elmahdy
+**Email:** zyad14elmahdy@gmail.com
+**GitHub:** https://github.com/zyadelmahdy/talking-mouse-extension
