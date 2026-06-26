@@ -2,12 +2,12 @@
   "manifest_version": 3,
   "name": "Talking Mouse",
   "short_name": "Talking Mouse",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mood-aware video recommendations powered by mouse trajectory analysis. No camera, no mic — just cursor patterns.",
   "author": "Zyad Elmahdy",
   "homepage_url": "https://github.com/zyadelmahdy/talking-mouse-extension",
   "minimum_chrome_version": "108",
-  "permissions": ["storage", "tabs"],
+  "permissions": ["storage"],
   "host_permissions": [
     "https://www.googleapis.com/*",
     "https://youtube.googleapis.com/*"

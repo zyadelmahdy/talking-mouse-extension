@@ -46,6 +46,8 @@ const N_QUERIES = 2;
 const PER_QUERY = 5;
 const MIN_DURATION_SEC = 60;
 const MAX_DURATION_SEC = 4 * 3600;
+const RESULT_POOL_SIZE = 15;  // top-N by views to sample the final picks from
+const FINAL_COUNT = 5;
 const YT_MUSIC_CATEGORY_ID = "10";   // YouTube's official Music category
 
 let currentArousal = null;
@@ -277,7 +279,7 @@ async function fetchAndRender() {
 
 async function fetchRecommendations(arousal) {
   const contentType = affectStrategy[arousal];
-  const queries = SEARCH_QUERIES[contentMode][contentType].slice(0, N_QUERIES);
+  const queries = shuffle(SEARCH_QUERIES[contentMode][contentType]).slice(0, N_QUERIES);
   const all = [];
   const seen = new Set();
   for (const q of queries) {
@@ -303,7 +305,17 @@ async function fetchRecommendations(arousal) {
       v.duration_sec <= MAX_DURATION_SEC,
   );
   filtered.sort((a, b) => b.view_count - a.view_count);
-  return filtered.slice(0, 5);
+  const pool = filtered.slice(0, RESULT_POOL_SIZE);
+  return shuffle(pool).slice(0, FINAL_COUNT);
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 async function ytSearch(query, maxResults) {

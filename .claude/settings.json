@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f talking-mouse-v1.0.1.zip)",
+      "Bash(zip -r talking-mouse-v1.0.1.zip . -x \".git/*\" \".DS_Store\" \"icons/.DS_Store\" \".gitignore\" \".gitattributes\" \"privacy policy\" \"*.zip\")",
+      "Bash(zip -r talking-mouse-v1.0.1.zip . -x \".git/*\" \".DS_Store\" \"icons/.DS_Store\" \".gitignore\" \".gitattributes\" \"privacy policy\" \"*.zip\" \".claude/*\" \".claude\")",
+      "Bash(unzip -l talking-mouse-v1.0.1.zip)"
+    ]
+  }
+}
